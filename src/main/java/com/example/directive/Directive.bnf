@@ -1,0 +1,116 @@
+{
+  parserClass="com.example.directive.DirectiveParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Directive"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.example.directive.psi"
+  psiImplPackage = "com.example.directive.psi.impl"
+
+  elementTypeHolderClass = "com.example.directive.psi.DirectiveTypes"
+  elementTypeClass="com.example.directive.psi.DirectiveElementType"
+  tokenTypeClass = "com.example.directive.psi.DirectiveTokenType"
+
+  //noinspection RegExpRedundantEscape
+  tokens=[
+    IF = "%if"
+    ELSEIF = "%elseif"
+    ELSE = "%else"
+    FOR = "%for"
+    END = "%end"
+    EXPAND = "%expand"
+    POPULATE = "%populate"
+    EMBEDDED = "#"
+    LITERAL = "^"
+    FOR_SEPARATOR = ":"
+    NULL = "null"
+    TRUE = "true"
+    FALSE = "false"
+    DOT = "."
+    EQ = "=="
+    NE = "!="
+    LT = "<"
+    LE = "<="
+    GT = ">"
+    GE = ">="
+    NOT = "!"
+    AND = "&&"
+    OR = "||"
+    COMMA = ","
+    LEFT_PAREN = "("
+    RIGHT_PAREN = ")"
+    AT_SIGN = "@"
+    FLOAT = "regexp:\d+(\.\d+)?F"
+    DOUBLE = "regexp:\d+(\.\d+)?D"
+    DECIMAL = "regexp:\d+(\.\d+)?B"
+    LONG = "regexp:\d+L"
+    INT = "regexp:\d+"
+    STRING = "regexp:\"([^\"\\]|\\\"|\\)*\""
+    CHAR = "regexp:'([^\'\\]|\\\')'"
+    CLASS_REF = "regexp:@\w+(\.\w+)*@"
+    IDENTIFIER = "regexp:\w+"
+  ]
+
+  extends(".*expr")=expr
+}
+
+directive ::= bind_variable_directive
+    | literal_variable_directive
+    | embedded_variable_directive
+    | if_directive
+    | elseif_directive
+    | else_directive
+    | for_directive
+    | end_directive
+    | expand_directive
+    | populate_directive
+
+bind_variable_directive ::= expr
+literal_variable_directive ::= "^" expr
+embedded_variable_directive ::= "#" expr
+if_directive ::= "%if" expr
+elseif_directive ::= "%elseif" expr
+else_directive ::= "%else"
+for_directive ::= "%for" id_expr ":" expr
+end_directive ::= "%end"
+expand_directive ::= "%expand" expr?
+populate_directive ::= "%populate"
+
+expr ::= factor_group
+    | invocation_operator_group
+    | logical_operator_group
+    | comparison_operator_group
+
+private factor_group ::= literal_expr | id_expr | paren_expr
+private invocation_operator_group ::= field_expr | method_expr | static_field_expr | static_method_expr | function_expr
+private comparison_operator_group ::= eq_expr | ne_expr | lt_expr | le_expr | gt_expr | ge_expr
+private logical_operator_group ::= not_expr | and_expr | or_expr
+
+// factors
+literal_expr ::= NULL | TRUE | FALSE | FLOAT | DOUBLE | DECIMAL | LONG | INT |  STRING | CHAR
+id_expr ::= IDENTIFIER
+paren_expr ::= "(" expr ")"
+
+// invocation operators
+field_expr ::= expr "." expr
+method_expr::= expr "(" (expr ("," expr)*)? ")"
+static_field_expr ::= CLASS_REF id_expr
+static_method_expr::= CLASS_REF id_expr "(" (expr ("," expr)*)? ")"
+function_expr ::= "@" id_expr "(" (expr ("," expr)*)? ")"
+
+// logical operators
+not_expr ::= "!" expr
+and_expr ::= expr "&&" expr
+or_expr ::= expr "||" expr
+
+// comparison operators
+eq_expr ::= expr "==" expr
+ne_expr ::= expr "!=" expr
+lt_expr ::= expr "<" expr
+le_expr ::= expr "<=" expr
+gt_expr ::= expr ">" expr
+ge_expr ::= expr ">=" expr
+
+
+
