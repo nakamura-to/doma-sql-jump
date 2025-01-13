@@ -28,9 +28,9 @@ public class SqlElLiteralVariableDirectiveImpl extends ASTWrapperPsiElement impl
   }
 
   @Override
-  @NotNull
+  @Nullable
   public SqlElExpr getElExpr() {
-    return findNotNullChildByClass(SqlElExpr.class);
+    return findChildByClass(SqlElExpr.class);
   }
 
 }

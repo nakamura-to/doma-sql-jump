@@ -28,9 +28,9 @@ public class SqlElElseifDirectiveImpl extends ASTWrapperPsiElement implements Sq
   }
 
   @Override
-  @NotNull
+  @Nullable
   public SqlElExpr getElExpr() {
-    return findNotNullChildByClass(SqlElExpr.class);
+    return findChildByClass(SqlElExpr.class);
   }
 
 }

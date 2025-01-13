@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface SqlElLiteralVariableDirective extends PsiElement {
 
-  @NotNull
+  @Nullable
   SqlElExpr getElExpr();
 
 }

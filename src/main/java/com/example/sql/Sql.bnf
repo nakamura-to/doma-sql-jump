@@ -86,16 +86,16 @@ private el_directive ::= el_bind_variable_directive
     | el_parser_level_comment_directive
 
 el_bind_variable_directive ::= el_expr
-el_literal_variable_directive ::= "^" el_expr
-el_embedded_variable_directive ::= "#" el_expr
-el_if_directive ::= "%if" el_expr
-el_elseif_directive ::= "%elseif" el_expr
+el_literal_variable_directive ::= "^" el_expr {pin=1}
+el_embedded_variable_directive ::= "#" el_expr {pin=1}
+el_if_directive ::= "%if" el_expr {pin=1}
+el_elseif_directive ::= "%elseif" el_expr {pin=1}
 el_else_directive ::= "%else"
-el_for_directive ::= "%for" el_id_expr ":" el_expr
+el_for_directive ::= "%for" el_id_expr ":" el_expr {pin=1}
 el_end_directive ::= "%end"
-el_expand_directive ::= "%expand" el_expr?
+el_expand_directive ::= "%expand" el_expr? {pin=1}
 el_populate_directive ::= "%populate"
-el_parser_level_comment_directive ::= "%!" BLOCK_COMMENT_CONTENT*
+el_parser_level_comment_directive ::= "%!" BLOCK_COMMENT_CONTENT* {pin=1}
 
 el_expr ::= el_factor_group
     | el_invocation_expr_group

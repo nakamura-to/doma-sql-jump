@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface SqlElIfDirective extends PsiElement {
 
-  @NotNull
+  @Nullable
   SqlElExpr getElExpr();
 
 }

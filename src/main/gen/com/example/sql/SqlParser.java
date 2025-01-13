@@ -197,12 +197,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_elseif_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_elseif_directive")) return false;
     if (!nextTokenIs(b, EL_ELSEIF)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_ELSEIF_DIRECTIVE, null);
     r = consumeToken(b, EL_ELSEIF);
+    p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
-    exit_section_(b, m, EL_ELSEIF_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -210,12 +211,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_embedded_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_embedded_variable_directive")) return false;
     if (!nextTokenIs(b, EL_EMBEDDED)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_EMBEDDED_VARIABLE_DIRECTIVE, null);
     r = consumeToken(b, EL_EMBEDDED);
+    p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
-    exit_section_(b, m, EL_EMBEDDED_VARIABLE_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -235,12 +237,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_expand_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_expand_directive")) return false;
     if (!nextTokenIs(b, EL_EXPAND)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_EXPAND_DIRECTIVE, null);
     r = consumeToken(b, EL_EXPAND);
+    p = r; // pin = 1
     r = r && el_expand_directive_1(b, l + 1);
-    exit_section_(b, m, EL_EXPAND_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   // el_expr?
@@ -255,14 +258,15 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_for_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_for_directive")) return false;
     if (!nextTokenIs(b, EL_FOR)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_FOR_DIRECTIVE, null);
     r = consumeToken(b, EL_FOR);
-    r = r && el_id_expr(b, l + 1);
-    r = r && consumeToken(b, EL_SEPARATOR);
-    r = r && el_expr(b, l + 1, -1);
-    exit_section_(b, m, EL_FOR_DIRECTIVE, r);
-    return r;
+    p = r; // pin = 1
+    r = r && report_error_(b, el_id_expr(b, l + 1));
+    r = p && report_error_(b, consumeToken(b, EL_SEPARATOR)) && r;
+    r = p && el_expr(b, l + 1, -1) && r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -270,12 +274,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_if_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_if_directive")) return false;
     if (!nextTokenIs(b, EL_IF)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_IF_DIRECTIVE, null);
     r = consumeToken(b, EL_IF);
+    p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
-    exit_section_(b, m, EL_IF_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -283,12 +288,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_literal_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_literal_variable_directive")) return false;
     if (!nextTokenIs(b, EL_LITERAL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_LITERAL_VARIABLE_DIRECTIVE, null);
     r = consumeToken(b, EL_LITERAL);
+    p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
-    exit_section_(b, m, EL_LITERAL_VARIABLE_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   /* ********************************************************** */
@@ -350,12 +356,13 @@ public class SqlParser implements PsiParser, LightPsiParser {
   public static boolean el_parser_level_comment_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_parser_level_comment_directive")) return false;
     if (!nextTokenIs(b, EL_PARSER_LEVEL_COMMENT)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, EL_PARSER_LEVEL_COMMENT_DIRECTIVE, null);
     r = consumeToken(b, EL_PARSER_LEVEL_COMMENT);
+    p = r; // pin = 1
     r = r && el_parser_level_comment_directive_1(b, l + 1);
-    exit_section_(b, m, EL_PARSER_LEVEL_COMMENT_DIRECTIVE, r);
-    return r;
+    exit_section_(b, l, m, r, p, null);
+    return r || p;
   }
 
   // BLOCK_COMMENT_CONTENT*
