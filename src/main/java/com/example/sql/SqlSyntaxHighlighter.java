@@ -1,7 +1,5 @@
 package com.example.sql;
 
-import com.example.directive.psi.DirectiveTypes;
-import com.example.sql.psi.SqlTokenType;
 import com.example.sql.psi.SqlTypes;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
