@@ -10,10 +10,6 @@
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
-    <extensions defaultExtensionNs="org.intellij.intelliLang">
-        <injectionConfig config="META-INF/injections.xml"/>
-    </extensions>
-
     <extensions defaultExtensionNs="com.intellij">
         <fileType
                 name="Sql File"
@@ -27,61 +23,10 @@
         <lang.syntaxHighlighterFactory
                 language="SqlTemplate"
                 implementationClass="com.example.sql.SqlSyntaxHighlighterFactory"/>
+    </extensions>
 
-<!--        <fileType-->
-<!--                name="Directive File"-->
-<!--                implementationClass="com.example.directive.DirectiveFileType"-->
-<!--                fieldName="INSTANCE"-->
-<!--                language="SqlTemplateDirective"-->
-<!--                extensions="directive"/>-->
-<!--        <lang.parserDefinition-->
-<!--                language="SqlTemplateDirective"-->
-<!--                implementationClass="com.example.directive.DirectiveParserDefinition"/>-->
-<!--        <lang.syntaxHighlighterFactory-->
-<!--                language="SqlTemplateDirective"-->
-<!--                implementationClass="com.example.directive.DirectiveSyntaxHighlighterFactory"/>-->
-<!--        <languageInjectionContributor-->
-<!--                implementationClass="com.example.directive.DirectiveInjector"-->
-<!--                language="SqlTemplate"/>-->
-<!--        <multiHostInjector-->
-<!--                implementation="com.example.directive.DirectiveMultiHostInjector"/>-->
-
-        <!--        <colorSettingsPage-->
-<!--                implementation="com.example.directive.DirectiveColorSettingsPage"/>-->
-        <!--        <toolWindow factoryClass="com.github.nakamurato.domasqljump.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>-->
-<!--        <fileType-->
-<!--                name="Simple File"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleFileType"-->
-<!--                fieldName="INSTANCE"-->
-<!--                language="Simple"-->
-<!--                extensions="simple"/>-->
-<!--        <lang.parserDefinition-->
-<!--                language="Simple"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleParserDefinition"/>-->
-<!--        <lang.syntaxHighlighterFactory-->
-<!--                language="Simple"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleSyntaxHighlighterFactory"/>-->
-<!--        <colorSettingsPage-->
-<!--                implementation="org.intellij.sdk.language.SimpleColorSettingsPage"/>-->
-<!--        <annotator-->
-<!--                language="JAVA"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleAnnotator"/>-->
-<!--        <codeInsight.lineMarkerProvider-->
-<!--                language="JAVA"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleLineMarkerProvider"/>-->
-<!--        <completion.contributor-->
-<!--                language="Simple"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleCompletionContributor"/>-->
-<!--        <psi.referenceContributor-->
-<!--                language="JAVA"-->
-<!--                implementation="org.intellij.sdk.language.SimpleReferenceContributor"/>-->
-<!--        <lang.refactoringSupport-->
-<!--                language="Simple"-->
-<!--                implementationClass="org.intellij.sdk.language.SimpleRefactoringSupportProvider"/>-->
-
-        <!--        <multiHostInjector-->
-        <!--                implementation="com.example.sql.MyDSLInjector"/>-->
-
+    <extensions defaultExtensionNs="org.intellij.intelliLang">
+        <injectionConfig config="META-INF/injections.xml"/>
     </extensions>
 
     <applicationListeners>

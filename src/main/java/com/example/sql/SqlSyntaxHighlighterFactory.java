@@ -7,7 +7,6 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.tree.IElementType;
-import org.intellij.sdk.language.SimpleSyntaxHighlighter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

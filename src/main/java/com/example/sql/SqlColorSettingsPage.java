@@ -1,6 +1,5 @@
 package com.example.sql;
 
-import com.example.directive.DirectiveSyntaxHighlighter;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
@@ -15,10 +14,10 @@ import java.util.Map;
 final class SqlColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Identifier", DirectiveSyntaxHighlighter.IDENTIFIER),
-            new AttributesDescriptor("DirectiveName//If", DirectiveSyntaxHighlighter.IF),
-            new AttributesDescriptor("DirectiveName//For", DirectiveSyntaxHighlighter.FOR),
-            new AttributesDescriptor("DirectiveName//End", DirectiveSyntaxHighlighter.END)
+            new AttributesDescriptor("Identifier", SqlSyntaxHighlighter.EL_IDENTIFIER),
+            new AttributesDescriptor("DirectiveName//If", SqlSyntaxHighlighter.EL_IF),
+            new AttributesDescriptor("DirectiveName//For", SqlSyntaxHighlighter.EL_FOR),
+            new AttributesDescriptor("DirectiveName//End", SqlSyntaxHighlighter.EL_END),
     };
 
     @Override
@@ -30,23 +29,23 @@ final class SqlColorSettingsPage implements ColorSettingsPage {
     @NotNull
     @Override
     public SyntaxHighlighter getHighlighter() {
-        return new DirectiveSyntaxHighlighter();
+        return new SqlSyntaxHighlighter();
     }
 
     @NotNull
     @Override
     public String getDemoText() {
         return """
-             select * from employee where
-             /* %for name : names */
-             employee_name like /* name */'hoge'
-               /*%if name_has_next */
-             /*# @isEmpty() */
-               /*%end */
-             /*%end*/
-             or
-             salary > 1000
-             """;
+                select * from employee where
+                /* %for name : names */
+                employee_name like /* name */'hoge'
+                  /*%if name_has_next */
+                /*# @isEmpty() */
+                  /*%end */
+                /*%end*/
+                or
+                salary > 1000
+                """;
     }
 
     @Nullable
