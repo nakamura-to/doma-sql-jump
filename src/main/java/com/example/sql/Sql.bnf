@@ -66,12 +66,16 @@
   extends(".*expr")=el_expr
 }
 
-sql_file ::= (comment | literal | word | OTHER)*
+sql_file ::= content *
 
+private content ::= !<<eof>> item {pin=1 recoverWhile=content_recover}
+private item ::= (comment | literal | word | OTHER)
 private comment ::= (block_comment | LINE_COMMENT)
 private literal ::= (STRING | NUMBER)
 private word ::= (KEYWORD | WORD)
-private block_comment ::= "/*" (el_directive | BLOCK_COMMENT_CONTENT*) "*/"
+private block_comment ::= "/*" (el_directive | BLOCK_COMMENT_CONTENT) "*/" {pin=1}
+// Detect errors for each item
+private content_recover ::= !item
 
 private el_directive ::= el_bind_variable_directive
     | el_literal_variable_directive
@@ -112,18 +116,18 @@ private el_arithmetic_expr_group ::= el_add_expr | el_subtract_expr | el_multipl
 // factors
 el_literal_expr ::= EL_NULL | EL_BOOLEAN | EL_NUMBER | EL_STRING | EL_CHAR
 el_id_expr ::= EL_IDENTIFIER
-el_paren_expr ::= "(" el_expr ")"
+el_paren_expr ::= "(" el_expr ")" {pin=1}
 
 // invocation operators
 el_field_access_expr ::= el_expr "." el_expr
 el_method_call_expr ::= el_expr el_parameters
 el_static_field_access_expr ::= el_class_ref el_expr
 el_static_method_call_expr ::= el_class_ref el_id_expr el_parameters
-el_function_call_expr ::= "@" el_id_expr el_parameters
-el_new_expr ::= "new" el_class el_parameters
-private el_class_ref ::= "@" el_class "@"
+el_function_call_expr ::= "@" el_id_expr el_parameters {pin=1}
+el_new_expr ::= "new" el_class el_parameters {pin=1}
+private el_class_ref ::= "@" el_class "@" {pin=1}
 private el_class ::= el_id_expr ("." el_id_expr)*
-private el_parameters ::= "(" (el_expr ("," el_expr)*)? ")"
+private el_parameters ::= "(" (el_expr ("," el_expr)*)? ")" {pin=1}
 
 // logical operators
 el_not_expr ::= "!" el_expr
