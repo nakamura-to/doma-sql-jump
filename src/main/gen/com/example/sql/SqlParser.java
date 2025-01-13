@@ -45,7 +45,7 @@ public class SqlParser implements PsiParser, LightPsiParser {
   };
 
   /* ********************************************************** */
-  // "/*" (el_directive | BLOCK_COMMENT_CONTENT) "*/"
+  // "/*" (el_directive | BLOCK_COMMENT_CONTENT?) "*/"
   static boolean block_comment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "block_comment")) return false;
     if (!nextTokenIs(b, BLOCK_COMMENT_START)) return false;
@@ -59,13 +59,22 @@ public class SqlParser implements PsiParser, LightPsiParser {
     return r || p;
   }
 
-  // el_directive | BLOCK_COMMENT_CONTENT
+  // el_directive | BLOCK_COMMENT_CONTENT?
   private static boolean block_comment_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "block_comment_1")) return false;
     boolean r;
+    Marker m = enter_section_(b);
     r = el_directive(b, l + 1);
-    if (!r) r = consumeToken(b, BLOCK_COMMENT_CONTENT);
+    if (!r) r = block_comment_1_1(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
+  }
+
+  // BLOCK_COMMENT_CONTENT?
+  private static boolean block_comment_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "block_comment_1_1")) return false;
+    consumeToken(b, BLOCK_COMMENT_CONTENT);
+    return true;
   }
 
   /* ********************************************************** */
