@@ -84,7 +84,7 @@ import com.example.sql.psi.SqlTypes;
 // common
 LineTerminator = \R
 WhieteSpace = [ \n\t\f]
-CommentContent = ([^*]|\*+[^/])+
+BlockCommentContent = ([^*]|\*+[^/])+
 
 // SQL tokens
 BlockCommentStart = "/*"
@@ -93,6 +93,7 @@ LineComment = "--" .* {LineTerminator}?
 Word = [:jletterdigit:]+
 Number = \d+
 String = \'((\'\')|[^\'])*\'
+InvalidDreictive = "%" ("if"|"elseif"|"else"|"for"|"expand"|"populate"|"end") ([^=<>\-,/*();\R \n\t\f])+
 
 // EL tokens
 El_Number = \d+(L|(\.\d+)?[FDB])?
@@ -160,14 +161,15 @@ El_Identifier = [:jletter:][:jletterdigit:]*
 
 <DIRECTIVE> {
   {BlockCommentEnd}                            { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END; }
+  {InvalidDreictive}                           { return TokenType.BAD_CHARACTER; }
   "%if"                                        { yybegin(EXPRESSION); return SqlTypes.EL_IF; }
-  "%else"                                      { yybegin(EXPRESSION); return SqlTypes.EL_ELSE; }
   "%elseif"                                    { yybegin(EXPRESSION); return SqlTypes.EL_ELSEIF; }
+  "%else"                                      { yybegin(EXPRESSION); return SqlTypes.EL_ELSE; }
   "%for"                                       { yybegin(EXPRESSION); return SqlTypes.EL_FOR; }
   "%expand"                                    { yybegin(EXPRESSION); return SqlTypes.EL_EXPAND; }
   "%populate"                                  { yybegin(EXPRESSION); return SqlTypes.EL_POPULATE; }
-  "%!"                                         { yybegin(PARSER_LEVEL_COMMENT); return SqlTypes.EL_PARSER_LEVEL_COMMENT; }
   "%end"                                       { yybegin(EXPRESSION); return SqlTypes.EL_END; }
+  "%!"                                         { yybegin(PARSER_LEVEL_COMMENT); return SqlTypes.EL_PARSER_LEVEL_COMMENT; }
   "#"                                          { yybegin(EXPRESSION); return SqlTypes.EL_EMBEDDED; }
   "^"                                          { yybegin(EXPRESSION); return SqlTypes.EL_LITERAL; }
   ({LineTerminator}|{WhieteSpace})+            { return TokenType.WHITE_SPACE; }
@@ -176,12 +178,12 @@ El_Identifier = [:jletter:][:jletterdigit:]*
 
 <BLOCK_COMMENT> {
   {BlockCommentEnd}                            { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END; }
-  {CommentContent}                             { return SqlTypes.BLOCK_COMMENT_CONTENT; }
+  {BlockCommentContent}                        { return SqlTypes.BLOCK_COMMENT_CONTENT; }
   [^]                                          { return TokenType.BAD_CHARACTER; }
 }
 
 <PARSER_LEVEL_COMMENT> {
   {BlockCommentEnd}                            { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END; }
-  {CommentContent}                             { return SqlTypes.BLOCK_COMMENT_CONTENT; }
+  {BlockCommentContent}                        { return SqlTypes.BLOCK_COMMENT_CONTENT; }
   [^]                                          { return TokenType.BAD_CHARACTER; }
 }
