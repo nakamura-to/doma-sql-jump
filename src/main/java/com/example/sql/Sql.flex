@@ -100,7 +100,7 @@ El_String = \"((\"\")|[^\"])*\"
 El_Char = \'.\'
 El_Identifier = [:jletter:][:jletterdigit:]*
 
-%state EXPRESSION EXPLICIT_DIRECITVE BLOCK_COMMENT PARSER_LEVEL_COMMENT
+%state EXPRESSION DIRECTIVE BLOCK_COMMENT PARSER_LEVEL_COMMENT
 
 %%
 
@@ -108,7 +108,7 @@ El_Identifier = [:jletter:][:jletterdigit:]*
   {BlockCommentStart} {
     char next = yycharat(yylength());
     if (next == '%' || next == '#' || next == '^') {
-        yybegin(EXPLICIT_DIRECITVE);
+        yybegin(DIRECTIVE);
     } else if (next == '@' || next == '"' || next == '\'' || Character.isJavaIdentifierStart(next) || Character.isWhitespace(next)) {
         yybegin(EXPRESSION);
     } else {
@@ -158,7 +158,7 @@ El_Identifier = [:jletter:][:jletterdigit:]*
   [^]                                          { return TokenType.BAD_CHARACTER; }
 }
 
-<EXPLICIT_DIRECITVE> {
+<DIRECTIVE> {
   {BlockCommentEnd}                            { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END; }
   "%if"                                        { yybegin(EXPRESSION); return SqlTypes.EL_IF; }
   "%else"                                      { yybegin(EXPRESSION); return SqlTypes.EL_ELSE; }

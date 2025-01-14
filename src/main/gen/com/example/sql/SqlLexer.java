@@ -25,7 +25,7 @@ class SqlLexer implements FlexLexer {
   /** lexical states */
   public static final int YYINITIAL = 0;
   public static final int EXPRESSION = 2;
-  public static final int EXPLICIT_DIRECITVE = 4;
+  public static final int DIRECTIVE = 4;
   public static final int BLOCK_COMMENT = 6;
   public static final int PARSER_LEVEL_COMMENT = 8;
 
@@ -1049,7 +1049,7 @@ class SqlLexer implements FlexLexer {
           case 27:
             { char next = yycharat(yylength());
     if (next == '%' || next == '#' || next == '^') {
-        yybegin(EXPLICIT_DIRECITVE);
+        yybegin(DIRECTIVE);
     } else if (next == '@' || next == '"' || next == '\'' || Character.isJavaIdentifierStart(next) || Character.isWhitespace(next)) {
         yybegin(EXPRESSION);
     } else {
