@@ -83,7 +83,7 @@ import com.example.sql.psi.SqlTypes;
 
 // common
 LineTerminator = \R
-WhieteSpace = [ \n\t\f]
+WhiteSpace = [ \n\t\f]
 BlockCommentContent = ([^*]|\*+[^/])+
 
 // SQL tokens
@@ -93,13 +93,13 @@ LineComment = "--" .* {LineTerminator}?
 Word = [:jletterdigit:]+
 Number = \d+
 String = \'((\'\')|[^\'])*\'
-InvalidDreictive = "%" ("if"|"elseif"|"else"|"for"|"expand"|"populate"|"end") ([^=<>\-,/*();\R \n\t\f])+
 
 // EL tokens
 El_Number = \d+(L|(\.\d+)?[FDB])?
 El_String = \"((\"\")|[^\"])*\"
 El_Char = \'.\'
 El_Identifier = [:jletter:][:jletterdigit:]*
+El_NonWordPart = [=<>\-,/*();\R \n\t\f]
 
 %state EXPRESSION DIRECTIVE BLOCK_COMMENT PARSER_LEVEL_COMMENT
 
@@ -121,8 +121,8 @@ El_Identifier = [:jletter:][:jletterdigit:]*
   {String}                                     { return SqlTypes.STRING; }
   {Number}                                     { return SqlTypes.NUMBER; }
   {Word}                                       { return isKeyword(yytext()) ? SqlTypes.KEYWORD : SqlTypes.WORD; }
-  ({LineTerminator}|{WhieteSpace})+            { return TokenType.WHITE_SPACE; }
-  .                                            { return SqlTypes.OTHER; }
+  ({LineTerminator}|{WhiteSpace})+             { return TokenType.WHITE_SPACE; }
+  [^]                                          { return SqlTypes.OTHER; }
 }
 
 <EXPRESSION> {
@@ -155,24 +155,23 @@ El_Identifier = [:jletter:][:jletterdigit:]*
   {El_String}                                  { return SqlTypes.EL_STRING; }
   {El_Char}                                    { return SqlTypes.EL_CHAR; }
   {El_Identifier}                              { return SqlTypes.EL_IDENTIFIER; }
-  ({LineTerminator}|{WhieteSpace})+            { return TokenType.WHITE_SPACE; }
+  ({LineTerminator}|{WhiteSpace})+             { return TokenType.WHITE_SPACE; }
   [^]                                          { return TokenType.BAD_CHARACTER; }
 }
 
 <DIRECTIVE> {
   {BlockCommentEnd}                            { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END; }
-  {InvalidDreictive}                           { return TokenType.BAD_CHARACTER; }
-  "%if"                                        { yybegin(EXPRESSION); return SqlTypes.EL_IF; }
-  "%elseif"                                    { yybegin(EXPRESSION); return SqlTypes.EL_ELSEIF; }
-  "%else"                                      { yybegin(EXPRESSION); return SqlTypes.EL_ELSE; }
-  "%for"                                       { yybegin(EXPRESSION); return SqlTypes.EL_FOR; }
-  "%expand"                                    { yybegin(EXPRESSION); return SqlTypes.EL_EXPAND; }
-  "%populate"                                  { yybegin(EXPRESSION); return SqlTypes.EL_POPULATE; }
-  "%end"                                       { yybegin(EXPRESSION); return SqlTypes.EL_END; }
+  "%if"/{El_NonWordPart}                       { yybegin(EXPRESSION); return SqlTypes.EL_IF; }
+  "%elseif"/{El_NonWordPart}                   { yybegin(EXPRESSION); return SqlTypes.EL_ELSEIF; }
+  "%else"/{El_NonWordPart}                     { yybegin(EXPRESSION); return SqlTypes.EL_ELSE; }
+  "%for"/{El_NonWordPart}                      { yybegin(EXPRESSION); return SqlTypes.EL_FOR; }
+  "%expand"/{El_NonWordPart}                   { yybegin(EXPRESSION); return SqlTypes.EL_EXPAND; }
+  "%populate"/{El_NonWordPart}                 { yybegin(EXPRESSION); return SqlTypes.EL_POPULATE; }
+  "%end"/{El_NonWordPart}                      { yybegin(EXPRESSION); return SqlTypes.EL_END; }
   "%!"                                         { yybegin(PARSER_LEVEL_COMMENT); return SqlTypes.EL_PARSER_LEVEL_COMMENT; }
-  "#"                                          { yybegin(EXPRESSION); return SqlTypes.EL_EMBEDDED; }
-  "^"                                          { yybegin(EXPRESSION); return SqlTypes.EL_LITERAL; }
-  ({LineTerminator}|{WhieteSpace})+            { return TokenType.WHITE_SPACE; }
+  "#"                                          { yybegin(EXPRESSION); return SqlTypes.EL_HASH; }
+  "^"                                          { yybegin(EXPRESSION); return SqlTypes.EL_CARET; }
+  ({LineTerminator}|{WhiteSpace})+             { return TokenType.WHITE_SPACE; }
   [^]                                          { return TokenType.BAD_CHARACTER; }
 }
 

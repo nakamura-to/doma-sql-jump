@@ -230,10 +230,10 @@ public class SqlParser implements PsiParser, LightPsiParser {
   // "#" el_expr
   static boolean el_embedded_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_embedded_variable_directive")) return false;
-    if (!nextTokenIsFast(b, EL_EMBEDDED)) return false;
+    if (!nextTokenIsFast(b, EL_HASH)) return false;
     boolean r, p;
     Marker m = enter_section_(b, l, _NONE_);
-    r = consumeTokenFast(b, EL_EMBEDDED);
+    r = consumeTokenFast(b, EL_HASH);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
     exit_section_(b, l, m, r, p, null);
@@ -301,10 +301,10 @@ public class SqlParser implements PsiParser, LightPsiParser {
   // "^" el_expr
   static boolean el_literal_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_literal_variable_directive")) return false;
-    if (!nextTokenIsFast(b, EL_LITERAL)) return false;
+    if (!nextTokenIsFast(b, EL_CARET)) return false;
     boolean r, p;
     Marker m = enter_section_(b, l, _NONE_);
-    r = consumeTokenFast(b, EL_LITERAL);
+    r = consumeTokenFast(b, EL_CARET);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
     exit_section_(b, l, m, r, p, null);

@@ -50,10 +50,10 @@ public class SqlSyntaxHighlighter extends SyntaxHighlighterBase {
             createTextAttributesKey("EL_PARSER_LEVEL_COMMENT", DefaultLanguageHighlighterColors.METADATA);
     public static final TextAttributesKey EL_END =
             createTextAttributesKey("EL_END", DefaultLanguageHighlighterColors.METADATA);
-    public static final TextAttributesKey EL_EMBEDDED =
-            createTextAttributesKey("EL_EMBEDDED", DefaultLanguageHighlighterColors.METADATA);
-    public static final TextAttributesKey EL_LITERAL =
-            createTextAttributesKey("EL_LITERAL", DefaultLanguageHighlighterColors.METADATA);
+    public static final TextAttributesKey EL_HASH =
+            createTextAttributesKey("EL_HASH", DefaultLanguageHighlighterColors.METADATA);
+    public static final TextAttributesKey EL_CARET =
+            createTextAttributesKey("EL_CARET", DefaultLanguageHighlighterColors.METADATA);
 
 
     public static final TextAttributesKey EL_DOT =
@@ -129,8 +129,8 @@ public class SqlSyntaxHighlighter extends SyntaxHighlighterBase {
         map.put(SqlTypes.EL_PARSER_LEVEL_COMMENT, EL_PARSER_LEVEL_COMMENT);
         map.put(SqlTypes.EL_FOR, EL_FOR);
         map.put(SqlTypes.EL_END, EL_END);
-        map.put(SqlTypes.EL_EMBEDDED, EL_EMBEDDED);
-        map.put(SqlTypes.EL_LITERAL, EL_LITERAL);
+        map.put(SqlTypes.EL_HASH, EL_HASH);
+        map.put(SqlTypes.EL_CARET, EL_CARET);
 
         map.put(SqlTypes.EL_DOT, EL_DOT);
         map.put(SqlTypes.EL_COMMA, EL_COMMA);
