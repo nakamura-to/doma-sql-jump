@@ -114,7 +114,7 @@ private el_logical_expr_group ::= el_not_expr | el_and_expr | el_or_expr
 private el_comparison_expr_group ::= el_eq_expr | el_ne_expr | el_lt_expr | el_le_expr | el_gt_expr | el_ge_expr
 private el_arithmetic_expr_group ::= el_add_expr | el_subtract_expr | el_multiply_expr | el_divide_expr | el_mod_expr
 
-// factors
+// primary
 el_literal_expr ::= EL_NULL | EL_BOOLEAN | EL_NUMBER | EL_STRING | EL_CHAR
 el_id_expr ::= EL_IDENTIFIER
 el_paren_expr ::= "(" el_expr ")" {pin=1}
