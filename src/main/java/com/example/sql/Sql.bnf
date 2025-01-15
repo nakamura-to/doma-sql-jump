@@ -120,7 +120,7 @@ el_id_expr ::= EL_IDENTIFIER
 el_paren_expr ::= "(" el_expr ")" {pin=1}
 
 // invocation operators
-el_field_access_expr ::= el_expr "." el_expr {pin=2}
+el_field_access_expr ::= el_expr "." el_expr
 el_method_call_expr ::= el_expr el_parameters
 el_static_field_access_expr ::= el_class_ref el_expr
 el_static_method_call_expr ::= el_class_ref el_id_expr el_parameters
