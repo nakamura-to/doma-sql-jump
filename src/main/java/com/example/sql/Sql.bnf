@@ -102,13 +102,13 @@ el_expand_directive ::= "%expand" el_expr? {pin=1}
 el_populate_directive ::= "%populate"
 el_parser_level_comment_directive ::= "%!" BLOCK_COMMENT_CONTENT* {pin=1}
 
-el_expr ::= el_factor_group
+el_expr ::= el_primary_group
     | el_invocation_expr_group
     | el_logical_expr_group
     | el_comparison_expr_group
     | el_arithmetic_expr_group
 
-private el_factor_group ::= el_literal_expr | el_id_expr | el_paren_expr
+private el_primary_group ::= el_literal_expr | el_id_expr | el_paren_expr
 private el_invocation_expr_group ::= el_field_access_expr | el_method_call_expr | el_static_field_access_expr | el_static_method_call_expr | el_function_call_expr | el_new_expr
 private el_logical_expr_group ::= el_not_expr | el_and_expr | el_or_expr
 private el_comparison_expr_group ::= el_eq_expr | el_ne_expr | el_lt_expr | el_le_expr | el_gt_expr | el_ge_expr
