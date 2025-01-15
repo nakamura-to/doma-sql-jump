@@ -15,36 +15,12 @@ public class SqlVisitor extends PsiElementVisitor {
     visitElExpr(o);
   }
 
-  public void visitElBindVariableDirective(@NotNull SqlElBindVariableDirective o) {
-    visitPsiElement(o);
-  }
-
   public void visitElDivideExpr(@NotNull SqlElDivideExpr o) {
     visitElExpr(o);
   }
 
-  public void visitElElseDirective(@NotNull SqlElElseDirective o) {
-    visitPsiElement(o);
-  }
-
-  public void visitElElseifDirective(@NotNull SqlElElseifDirective o) {
-    visitPsiElement(o);
-  }
-
-  public void visitElEmbeddedVariableDirective(@NotNull SqlElEmbeddedVariableDirective o) {
-    visitPsiElement(o);
-  }
-
-  public void visitElEndDirective(@NotNull SqlElEndDirective o) {
-    visitPsiElement(o);
-  }
-
   public void visitElEqExpr(@NotNull SqlElEqExpr o) {
     visitElExpr(o);
-  }
-
-  public void visitElExpandDirective(@NotNull SqlElExpandDirective o) {
-    visitPsiElement(o);
   }
 
   public void visitElExpr(@NotNull SqlElExpr o) {
@@ -53,10 +29,6 @@ public class SqlVisitor extends PsiElementVisitor {
 
   public void visitElFieldAccessExpr(@NotNull SqlElFieldAccessExpr o) {
     visitElExpr(o);
-  }
-
-  public void visitElForDirective(@NotNull SqlElForDirective o) {
-    visitPsiElement(o);
   }
 
   public void visitElFunctionCallExpr(@NotNull SqlElFunctionCallExpr o) {
@@ -75,20 +47,12 @@ public class SqlVisitor extends PsiElementVisitor {
     visitElExpr(o);
   }
 
-  public void visitElIfDirective(@NotNull SqlElIfDirective o) {
-    visitPsiElement(o);
-  }
-
   public void visitElLeExpr(@NotNull SqlElLeExpr o) {
     visitElExpr(o);
   }
 
   public void visitElLiteralExpr(@NotNull SqlElLiteralExpr o) {
     visitElExpr(o);
-  }
-
-  public void visitElLiteralVariableDirective(@NotNull SqlElLiteralVariableDirective o) {
-    visitPsiElement(o);
   }
 
   public void visitElLtExpr(@NotNull SqlElLtExpr o) {
@@ -125,14 +89,6 @@ public class SqlVisitor extends PsiElementVisitor {
 
   public void visitElParenExpr(@NotNull SqlElParenExpr o) {
     visitElExpr(o);
-  }
-
-  public void visitElParserLevelCommentDirective(@NotNull SqlElParserLevelCommentDirective o) {
-    visitPsiElement(o);
-  }
-
-  public void visitElPopulateDirective(@NotNull SqlElPopulateDirective o) {
-    visitPsiElement(o);
   }
 
   public void visitElStaticFieldAccessExpr(@NotNull SqlElStaticFieldAccessExpr o) {

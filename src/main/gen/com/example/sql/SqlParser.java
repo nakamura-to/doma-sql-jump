@@ -124,13 +124,8 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // el_expr
-  public static boolean el_bind_variable_directive(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "el_bind_variable_directive")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, EL_BIND_VARIABLE_DIRECTIVE, "<el bind variable directive>");
-    r = el_expr(b, l + 1, -1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
+  static boolean el_bind_variable_directive(PsiBuilder b, int l) {
+    return el_expr(b, l + 1, -1);
   }
 
   /* ********************************************************** */
@@ -213,23 +208,17 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%else"
-  public static boolean el_else_directive(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "el_else_directive")) return false;
-    if (!nextTokenIsFast(b, EL_ELSE)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokenFast(b, EL_ELSE);
-    exit_section_(b, m, EL_ELSE_DIRECTIVE, r);
-    return r;
+  static boolean el_else_directive(PsiBuilder b, int l) {
+    return consumeTokenFast(b, EL_ELSE);
   }
 
   /* ********************************************************** */
   // "%elseif" el_expr
-  public static boolean el_elseif_directive(PsiBuilder b, int l) {
+  static boolean el_elseif_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_elseif_directive")) return false;
     if (!nextTokenIsFast(b, EL_ELSEIF)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_ELSEIF_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_ELSEIF);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
@@ -239,11 +228,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "#" el_expr
-  public static boolean el_embedded_variable_directive(PsiBuilder b, int l) {
+  static boolean el_embedded_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_embedded_variable_directive")) return false;
     if (!nextTokenIsFast(b, EL_EMBEDDED)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_EMBEDDED_VARIABLE_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_EMBEDDED);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
@@ -253,23 +242,17 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%end"
-  public static boolean el_end_directive(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "el_end_directive")) return false;
-    if (!nextTokenIsFast(b, EL_END)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokenFast(b, EL_END);
-    exit_section_(b, m, EL_END_DIRECTIVE, r);
-    return r;
+  static boolean el_end_directive(PsiBuilder b, int l) {
+    return consumeTokenFast(b, EL_END);
   }
 
   /* ********************************************************** */
   // "%expand" el_expr?
-  public static boolean el_expand_directive(PsiBuilder b, int l) {
+  static boolean el_expand_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_expand_directive")) return false;
     if (!nextTokenIsFast(b, EL_EXPAND)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_EXPAND_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_EXPAND);
     p = r; // pin = 1
     r = r && el_expand_directive_1(b, l + 1);
@@ -286,11 +269,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%for" el_id_expr ":" el_expr
-  public static boolean el_for_directive(PsiBuilder b, int l) {
+  static boolean el_for_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_for_directive")) return false;
     if (!nextTokenIsFast(b, EL_FOR)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_FOR_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_FOR);
     p = r; // pin = 1
     r = r && report_error_(b, el_id_expr(b, l + 1));
@@ -302,11 +285,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%if" el_expr
-  public static boolean el_if_directive(PsiBuilder b, int l) {
+  static boolean el_if_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_if_directive")) return false;
     if (!nextTokenIsFast(b, EL_IF)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_IF_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_IF);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
@@ -316,11 +299,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "^" el_expr
-  public static boolean el_literal_variable_directive(PsiBuilder b, int l) {
+  static boolean el_literal_variable_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_literal_variable_directive")) return false;
     if (!nextTokenIsFast(b, EL_LITERAL)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_LITERAL_VARIABLE_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_LITERAL);
     p = r; // pin = 1
     r = r && el_expr(b, l + 1, -1);
@@ -385,11 +368,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%!" BLOCK_COMMENT_CONTENT*
-  public static boolean el_parser_level_comment_directive(PsiBuilder b, int l) {
+  static boolean el_parser_level_comment_directive(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_parser_level_comment_directive")) return false;
     if (!nextTokenIsFast(b, EL_PARSER_LEVEL_COMMENT)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, EL_PARSER_LEVEL_COMMENT_DIRECTIVE, null);
+    Marker m = enter_section_(b, l, _NONE_);
     r = consumeTokenFast(b, EL_PARSER_LEVEL_COMMENT);
     p = r; // pin = 1
     r = r && el_parser_level_comment_directive_1(b, l + 1);
@@ -410,14 +393,8 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "%populate"
-  public static boolean el_populate_directive(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "el_populate_directive")) return false;
-    if (!nextTokenIsFast(b, EL_POPULATE)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokenFast(b, EL_POPULATE);
-    exit_section_(b, m, EL_POPULATE_DIRECTIVE, r);
-    return r;
+  static boolean el_populate_directive(PsiBuilder b, int l) {
+    return consumeTokenFast(b, EL_POPULATE);
   }
 
   /* ********************************************************** */
@@ -436,10 +413,10 @@ public class SqlParser implements PsiParser, LightPsiParser {
   // STRING | NUMBER
   static boolean literal(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "literal")) return false;
-    if (!nextTokenIs(b, "", NUMBER, STRING)) return false;
+    if (!nextTokenIsFast(b, NUMBER, STRING)) return false;
     boolean r;
-    r = consumeToken(b, STRING);
-    if (!r) r = consumeToken(b, NUMBER);
+    r = consumeTokenFast(b, STRING);
+    if (!r) r = consumeTokenFast(b, NUMBER);
     return r;
   }
 
@@ -459,10 +436,10 @@ public class SqlParser implements PsiParser, LightPsiParser {
   // KEYWORD | WORD
   static boolean word(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "word")) return false;
-    if (!nextTokenIs(b, "", KEYWORD, WORD)) return false;
+    if (!nextTokenIsFast(b, KEYWORD, WORD)) return false;
     boolean r;
-    r = consumeToken(b, KEYWORD);
-    if (!r) r = consumeToken(b, WORD);
+    r = consumeTokenFast(b, KEYWORD);
+    if (!r) r = consumeTokenFast(b, WORD);
     return r;
   }
 
