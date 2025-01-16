@@ -546,17 +546,44 @@ public class SqlParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // EL_NULL | EL_BOOLEAN | EL_NUMBER | EL_STRING | EL_CHAR
+  // EL_NULL | EL_BOOLEAN | (EL_PLUS | EL_MINUS)? EL_NUMBER | EL_STRING | EL_CHAR
   public static boolean el_literal_expr(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "el_literal_expr")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, EL_LITERAL_EXPR, "<el literal expr>");
     r = consumeTokenSmart(b, EL_NULL);
     if (!r) r = consumeTokenSmart(b, EL_BOOLEAN);
-    if (!r) r = consumeTokenSmart(b, EL_NUMBER);
+    if (!r) r = el_literal_expr_2(b, l + 1);
     if (!r) r = consumeTokenSmart(b, EL_STRING);
     if (!r) r = consumeTokenSmart(b, EL_CHAR);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // (EL_PLUS | EL_MINUS)? EL_NUMBER
+  private static boolean el_literal_expr_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "el_literal_expr_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = el_literal_expr_2_0(b, l + 1);
+    r = r && consumeToken(b, EL_NUMBER);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (EL_PLUS | EL_MINUS)?
+  private static boolean el_literal_expr_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "el_literal_expr_2_0")) return false;
+    el_literal_expr_2_0_0(b, l + 1);
+    return true;
+  }
+
+  // EL_PLUS | EL_MINUS
+  private static boolean el_literal_expr_2_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "el_literal_expr_2_0_0")) return false;
+    boolean r;
+    r = consumeTokenSmart(b, EL_PLUS);
+    if (!r) r = consumeTokenSmart(b, EL_MINUS);
     return r;
   }
 

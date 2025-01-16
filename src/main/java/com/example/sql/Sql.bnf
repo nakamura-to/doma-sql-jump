@@ -115,7 +115,7 @@ private el_comparison_expr_group ::= el_eq_expr | el_ne_expr | el_lt_expr | el_l
 private el_arithmetic_expr_group ::= el_add_expr | el_subtract_expr | el_multiply_expr | el_divide_expr | el_mod_expr
 
 // primary
-el_literal_expr ::= EL_NULL | EL_BOOLEAN | EL_NUMBER | EL_STRING | EL_CHAR
+el_literal_expr ::= EL_NULL | EL_BOOLEAN | (EL_PLUS | EL_MINUS)? EL_NUMBER | EL_STRING | EL_CHAR
 el_id_expr ::= EL_IDENTIFIER
 el_paren_expr ::= "(" el_expr ")" {pin=1}
 
