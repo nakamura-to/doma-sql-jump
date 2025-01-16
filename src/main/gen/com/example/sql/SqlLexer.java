@@ -369,13 +369,13 @@ class SqlLexer implements FlexLexer {
     "\1\24\1\25\3\7\1\5\1\26\2\5\1\27\1\30"+
     "\1\5\1\0\1\31\1\32\1\33\1\34\1\0\1\35"+
     "\1\36\1\0\1\37\1\0\1\21\1\40\1\41\1\42"+
-    "\4\7\1\43\1\44\5\0\1\30\2\32\1\45\1\0"+
-    "\1\7\1\46\2\7\6\0\1\47\1\50\4\0\1\51"+
-    "\2\0\1\52\1\0\1\53\1\0\1\54\6\0\1\55"+
-    "\1\56\2\0\1\57";
+    "\4\7\1\43\1\44\5\0\1\30\2\32\1\45\1\46"+
+    "\1\47\1\0\1\7\1\50\2\7\6\0\1\51\1\52"+
+    "\4\0\1\53\2\0\1\54\1\0\1\55\1\0\1\56"+
+    "\6\0\1\57\1\60\2\0\1\61";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[109];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -405,18 +405,18 @@ class SqlLexer implements FlexLexer {
     "\0\u0132\0\u02fd\0\u0330\0\u0132\0\u0132\0\u0363\0\u0132\0\u0132"+
     "\0\u0132\0\u0132\0\u0132\0\u0396\0\u0132\0\u03c9\0\u03fc\0\u042f"+
     "\0\u0132\0\u0462\0\u0495\0\u04c8\0\u04fb\0\u0132\0\u052e\0\u0363"+
-    "\0\u0132\0\u0561\0\u0594\0\u0165\0\u05c7\0\u05fa\0\u0132\0\u0132"+
-    "\0\u0297\0\u062d\0\u0132\0\u0660\0\u0132\0\u0693\0\u0132\0\u0132"+
-    "\0\u0132\0\u0132\0\u06c6\0\u06f9\0\u072c\0\u075f\0\u0132\0\u0132"+
-    "\0\u0792\0\u07c5\0\u07f8\0\u082b\0\u085e\0\u0891\0\u0132\0\u08c4"+
-    "\0\u0132\0\u08f7\0\u092a\0\u02ca\0\u095d\0\u0990\0\u09c3\0\u09f6"+
-    "\0\u0a29\0\u0a5c\0\u0a8f\0\u0ac2\0\u02ca\0\u02ca\0\u0af5\0\u0b28"+
-    "\0\u0b5b\0\u0b8e\0\u0132\0\u0bc1\0\u0bf4\0\u0132\0\u0c27\0\u0132"+
-    "\0\u0c5a\0\u0132\0\u0c8d\0\u0cc0\0\u0cf3\0\u0d26\0\u0d59\0\u0d8c"+
-    "\0\u0132\0\u0132\0\u0dbf\0\u0df2\0\u0132";
+    "\0\u0132\0\u0561\0\u0594\0\u0165\0\u05c7\0\u05fa\0\u062d\0\u0132"+
+    "\0\u0297\0\u0660\0\u0132\0\u0693\0\u0132\0\u06c6\0\u0132\0\u0132"+
+    "\0\u0132\0\u0132\0\u06f9\0\u072c\0\u075f\0\u0792\0\u0132\0\u0132"+
+    "\0\u07c5\0\u07f8\0\u082b\0\u085e\0\u0891\0\u08c4\0\u0132\0\u08f7"+
+    "\0\u0132\0\u0132\0\u0132\0\u092a\0\u095d\0\u02ca\0\u0990\0\u09c3"+
+    "\0\u09f6\0\u0a29\0\u0a5c\0\u0a8f\0\u0ac2\0\u0af5\0\u02ca\0\u02ca"+
+    "\0\u0b28\0\u0b5b\0\u0b8e\0\u0bc1\0\u0132\0\u0bf4\0\u0c27\0\u0132"+
+    "\0\u0c5a\0\u0132\0\u0c8d\0\u0132\0\u0cc0\0\u0cf3\0\u0d26\0\u0d59"+
+    "\0\u0d8c\0\u0dbf\0\u0132\0\u0132\0\u0df2\0\u0e25\0\u0132";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[109];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -467,42 +467,44 @@ class SqlLexer implements FlexLexer {
     "\11\0\1\100\33\0\1\101\1\102\1\103\3\0\1\104"+
     "\11\0\20\52\1\105\62\52\1\106\4\52\1\65\35\52"+
     "\15\0\1\54\45\0\2\56\3\107\1\110\53\56\1\107"+
-    "\11\0\1\61\67\0\1\111\73\0\1\112\34\0\1\20"+
-    "\11\0\1\20\13\0\1\20\6\0\3\20\1\0\5\20"+
-    "\1\113\11\20\1\0\1\20\1\0\1\20\11\0\1\20"+
-    "\13\0\1\20\6\0\3\20\1\0\15\20\1\114\1\20"+
-    "\1\0\1\20\1\0\1\20\11\0\1\20\13\0\1\20"+
-    "\6\0\3\20\1\0\5\20\1\115\11\20\1\0\1\20"+
-    "\1\0\1\20\11\0\1\20\13\0\1\20\6\0\3\20"+
-    "\1\0\14\20\1\116\2\20\1\0\1\20\47\0\1\117"+
-    "\1\120\7\0\1\121\53\0\1\122\56\0\1\123\66\0"+
-    "\1\124\12\0\20\52\1\106\4\52\1\0\55\52\1\106"+
-    "\42\52\2\0\1\107\106\0\1\112\6\0\1\67\25\0"+
-    "\1\20\11\0\1\20\13\0\1\20\6\0\3\20\1\0"+
-    "\12\20\1\116\4\20\1\0\1\20\1\0\1\20\11\0"+
-    "\1\20\13\0\1\20\6\0\3\20\1\0\5\20\1\125"+
+    "\2\0\2\111\1\0\1\111\3\0\1\111\1\112\1\111"+
+    "\1\112\1\0\1\111\16\0\4\111\1\112\17\111\13\0"+
+    "\1\61\67\0\1\113\73\0\1\114\34\0\1\20\11\0"+
+    "\1\20\13\0\1\20\6\0\3\20\1\0\5\20\1\115"+
     "\11\20\1\0\1\20\1\0\1\20\11\0\1\20\13\0"+
-    "\1\20\6\0\3\20\1\0\2\20\1\126\14\20\1\0"+
-    "\1\20\54\0\1\127\51\0\1\130\71\0\1\131\63\0"+
-    "\1\132\11\0\2\133\1\0\1\133\11\0\3\133\1\0"+
-    "\2\133\1\0\1\133\2\0\4\133\3\0\1\133\74\0"+
-    "\1\134\54\0\1\135\20\0\2\136\1\0\1\136\11\0"+
-    "\3\136\1\0\2\136\1\0\1\136\2\0\4\136\3\0"+
-    "\1\136\64\0\1\137\22\0\2\140\1\0\1\140\11\0"+
-    "\3\140\1\0\2\140\1\0\1\140\2\0\4\140\3\0"+
-    "\1\140\100\0\1\141\6\0\2\142\1\0\1\142\11\0"+
-    "\3\142\1\0\2\142\1\0\1\142\2\0\4\142\3\0"+
-    "\1\142\5\0\1\143\64\0\1\144\61\0\1\145\60\0"+
-    "\1\146\60\0\1\147\61\0\1\150\22\0\2\151\1\0"+
-    "\1\151\11\0\3\151\1\0\2\151\1\0\1\151\2\0"+
-    "\4\151\3\0\1\151\24\0\2\152\1\0\1\152\11\0"+
-    "\3\152\1\0\2\152\1\0\1\152\2\0\4\152\3\0"+
-    "\1\152\77\0\1\153\51\0\1\154\20\0\2\155\1\0"+
-    "\1\155\11\0\3\155\1\0\2\155\1\0\1\155\2\0"+
-    "\4\155\3\0\1\155\23\0";
+    "\1\20\6\0\3\20\1\0\15\20\1\116\1\20\1\0"+
+    "\1\20\1\0\1\20\11\0\1\20\13\0\1\20\6\0"+
+    "\3\20\1\0\5\20\1\117\11\20\1\0\1\20\1\0"+
+    "\1\20\11\0\1\20\13\0\1\20\6\0\3\20\1\0"+
+    "\14\20\1\120\2\20\1\0\1\20\47\0\1\121\1\122"+
+    "\7\0\1\123\53\0\1\124\56\0\1\125\66\0\1\126"+
+    "\12\0\20\52\1\106\4\52\1\0\55\52\1\106\42\52"+
+    "\2\0\1\107\106\0\1\114\6\0\1\67\25\0\1\20"+
+    "\11\0\1\20\13\0\1\20\6\0\3\20\1\0\12\20"+
+    "\1\120\4\20\1\0\1\20\1\0\1\20\11\0\1\20"+
+    "\13\0\1\20\6\0\3\20\1\0\5\20\1\127\11\20"+
+    "\1\0\1\20\1\0\1\20\11\0\1\20\13\0\1\20"+
+    "\6\0\3\20\1\0\2\20\1\130\14\20\1\0\1\20"+
+    "\54\0\1\131\51\0\1\132\71\0\1\133\63\0\1\134"+
+    "\11\0\2\135\1\0\1\135\11\0\3\135\1\0\2\135"+
+    "\1\0\1\135\2\0\4\135\3\0\1\135\74\0\1\136"+
+    "\54\0\1\137\20\0\2\140\1\0\1\140\11\0\3\140"+
+    "\1\0\2\140\1\0\1\140\2\0\4\140\3\0\1\140"+
+    "\64\0\1\141\22\0\2\142\1\0\1\142\11\0\3\142"+
+    "\1\0\2\142\1\0\1\142\2\0\4\142\3\0\1\142"+
+    "\100\0\1\143\6\0\2\144\1\0\1\144\11\0\3\144"+
+    "\1\0\2\144\1\0\1\144\2\0\4\144\3\0\1\144"+
+    "\5\0\1\145\64\0\1\146\61\0\1\147\60\0\1\150"+
+    "\60\0\1\151\61\0\1\152\22\0\2\153\1\0\1\153"+
+    "\11\0\3\153\1\0\2\153\1\0\1\153\2\0\4\153"+
+    "\3\0\1\153\24\0\2\154\1\0\1\154\11\0\3\154"+
+    "\1\0\2\154\1\0\1\154\2\0\4\154\3\0\1\154"+
+    "\77\0\1\155\51\0\1\156\20\0\2\157\1\0\1\157"+
+    "\11\0\3\157\1\0\2\157\1\0\1\157\2\0\4\157"+
+    "\3\0\1\157\23\0";
 
   private static int [] zzUnpacktrans() {
-    int [] result = new int[3621];
+    int [] result = new int[3672];
     int offset = 0;
     offset = zzUnpacktrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -542,14 +544,14 @@ class SqlLexer implements FlexLexer {
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\4\0\2\1\1\11\5\1\1\11\3\1\1\11\2\1"+
     "\2\11\1\1\5\11\1\1\1\11\3\1\1\11\4\1"+
-    "\1\11\2\1\1\11\2\1\1\0\2\1\2\11\1\0"+
+    "\1\11\2\1\1\11\2\1\1\0\3\1\1\11\1\0"+
     "\1\1\1\11\1\0\1\11\1\0\4\11\4\1\2\11"+
-    "\5\0\1\1\1\11\1\1\1\11\1\0\4\1\6\0"+
+    "\5\0\1\1\1\11\1\1\3\11\1\0\4\1\6\0"+
     "\2\1\4\0\1\11\2\0\1\11\1\0\1\11\1\0"+
     "\1\11\6\0\2\11\2\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[109];
+    int [] result = new int[111];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -933,266 +935,274 @@ class SqlLexer implements FlexLexer {
             { return isKeyword(yytext()) ? SqlTypes.KEYWORD : SqlTypes.WORD;
             }
           // fall through
-          case 48: break;
+          case 50: break;
           case 2:
             { return TokenType.WHITE_SPACE;
             }
           // fall through
-          case 49: break;
+          case 51: break;
           case 3:
             { return SqlTypes.OTHER;
             }
           // fall through
-          case 50: break;
+          case 52: break;
           case 4:
             { return SqlTypes.NUMBER;
             }
           // fall through
-          case 51: break;
+          case 53: break;
           case 5:
             { return TokenType.BAD_CHARACTER;
             }
           // fall through
-          case 52: break;
+          case 54: break;
           case 6:
             { return SqlTypes.EL_NOT;
             }
           // fall through
-          case 53: break;
+          case 55: break;
           case 7:
             { return SqlTypes.EL_IDENTIFIER;
             }
           // fall through
-          case 54: break;
+          case 56: break;
           case 8:
             { return SqlTypes.EL_PERCENT;
             }
           // fall through
-          case 55: break;
+          case 57: break;
           case 9:
             { return SqlTypes.EL_LEFT_PAREN;
             }
           // fall through
-          case 56: break;
+          case 58: break;
           case 10:
             { return SqlTypes.EL_RIGHT_PAREN;
             }
           // fall through
-          case 57: break;
+          case 59: break;
           case 11:
             { return SqlTypes.EL_ASTERISK;
             }
           // fall through
-          case 58: break;
+          case 60: break;
           case 12:
             { return SqlTypes.EL_PLUS;
             }
           // fall through
-          case 59: break;
+          case 61: break;
           case 13:
             { return SqlTypes.EL_COMMA;
             }
           // fall through
-          case 60: break;
+          case 62: break;
           case 14:
             { return SqlTypes.EL_MINUS;
             }
           // fall through
-          case 61: break;
+          case 63: break;
           case 15:
             { return SqlTypes.EL_DOT;
             }
           // fall through
-          case 62: break;
+          case 64: break;
           case 16:
             { return SqlTypes.EL_SLASH;
             }
           // fall through
-          case 63: break;
+          case 65: break;
           case 17:
             { return SqlTypes.EL_NUMBER;
             }
           // fall through
-          case 64: break;
+          case 66: break;
           case 18:
             { return SqlTypes.EL_SEPARATOR;
             }
           // fall through
-          case 65: break;
+          case 67: break;
           case 19:
             { return SqlTypes.EL_LT;
             }
           // fall through
-          case 66: break;
+          case 68: break;
           case 20:
             { return SqlTypes.EL_GT;
             }
           // fall through
-          case 67: break;
+          case 69: break;
           case 21:
             { return SqlTypes.EL_AT_SIGN;
             }
           // fall through
-          case 68: break;
+          case 70: break;
           case 22:
             { yybegin(EXPRESSION); return SqlTypes.EL_HASH;
             }
           // fall through
-          case 69: break;
+          case 71: break;
           case 23:
             { yybegin(EXPRESSION); return SqlTypes.EL_CARET;
             }
           // fall through
-          case 70: break;
+          case 72: break;
           case 24:
             { return SqlTypes.BLOCK_COMMENT_CONTENT;
             }
           // fall through
-          case 71: break;
+          case 73: break;
           case 25:
             { return SqlTypes.STRING;
             }
           // fall through
-          case 72: break;
+          case 74: break;
           case 26:
             { return SqlTypes.LINE_COMMENT;
             }
           // fall through
-          case 73: break;
+          case 75: break;
           case 27:
-            { char next = yycharat(yylength());
-    if (next == '%' || next == '#' || next == '^') {
-        yybegin(DIRECTIVE);
-    } else if (next == '@' || next == '"' || next == '\'' || Character.isJavaIdentifierStart(next) || Character.isWhitespace(next)) {
-        yybegin(EXPRESSION);
-    } else {
-        yybegin(BLOCK_COMMENT);
-    }
-    return SqlTypes.BLOCK_COMMENT_START;
+            { yybegin(BLOCK_COMMENT); return SqlTypes.BLOCK_COMMENT_START;
             }
           // fall through
-          case 74: break;
+          case 76: break;
           case 28:
             { return SqlTypes.EL_NE;
             }
           // fall through
-          case 75: break;
+          case 77: break;
           case 29:
             { return SqlTypes.EL_STRING;
             }
           // fall through
-          case 76: break;
+          case 78: break;
           case 30:
             { return SqlTypes.EL_AND;
             }
           // fall through
-          case 77: break;
+          case 79: break;
           case 31:
             { yybegin(YYINITIAL); return SqlTypes.BLOCK_COMMENT_END;
             }
           // fall through
-          case 78: break;
+          case 80: break;
           case 32:
             { return SqlTypes.EL_LE;
             }
           // fall through
-          case 79: break;
+          case 81: break;
           case 33:
             { return SqlTypes.EL_EQ;
             }
           // fall through
-          case 80: break;
+          case 82: break;
           case 34:
             { return SqlTypes.EL_GE;
             }
           // fall through
-          case 81: break;
+          case 83: break;
           case 35:
             { return SqlTypes.EL_OR;
             }
           // fall through
-          case 82: break;
+          case 84: break;
           case 36:
             { yybegin(PARSER_LEVEL_COMMENT); return SqlTypes.EL_PARSER_LEVEL_COMMENT;
             }
           // fall through
-          case 83: break;
-          case 37:
-            { return SqlTypes.EL_CHAR;
-            }
-          // fall through
-          case 84: break;
-          case 38:
-            { return SqlTypes.EL_NEW;
-            }
-          // fall through
           case 85: break;
-          case 39:
-            { return SqlTypes.EL_NULL;
+          case 37:
+            // lookahead expression with fixed base length
+            zzMarkedPos = Character.offsetByCodePoints
+                (zzBufferL, zzStartRead, 2);
+            { yybegin(EXPRESSION); return SqlTypes.BLOCK_COMMENT_START;
             }
           // fall through
           case 86: break;
-          case 40:
-            { return SqlTypes.EL_BOOLEAN;
+          case 38:
+            // lookahead expression with fixed base length
+            zzMarkedPos = Character.offsetByCodePoints
+                (zzBufferL, zzStartRead, 2);
+            { yybegin(DIRECTIVE); return SqlTypes.BLOCK_COMMENT_START;
             }
           // fall through
           case 87: break;
+          case 39:
+            { return SqlTypes.EL_CHAR;
+            }
+          // fall through
+          case 88: break;
+          case 40:
+            { return SqlTypes.EL_NEW;
+            }
+          // fall through
+          case 89: break;
           case 41:
+            { return SqlTypes.EL_NULL;
+            }
+          // fall through
+          case 90: break;
+          case 42:
+            { return SqlTypes.EL_BOOLEAN;
+            }
+          // fall through
+          case 91: break;
+          case 43:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 3);
             { yybegin(EXPRESSION); return SqlTypes.EL_IF;
             }
           // fall through
-          case 88: break;
-          case 42:
+          case 92: break;
+          case 44:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 4);
             { yybegin(EXPRESSION); return SqlTypes.EL_END;
             }
           // fall through
-          case 89: break;
-          case 43:
+          case 93: break;
+          case 45:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 4);
             { yybegin(EXPRESSION); return SqlTypes.EL_FOR;
             }
           // fall through
-          case 90: break;
-          case 44:
+          case 94: break;
+          case 46:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 5);
             { yybegin(EXPRESSION); return SqlTypes.EL_ELSE;
             }
           // fall through
-          case 91: break;
-          case 45:
+          case 95: break;
+          case 47:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 7);
             { yybegin(EXPRESSION); return SqlTypes.EL_ELSEIF;
             }
           // fall through
-          case 92: break;
-          case 46:
+          case 96: break;
+          case 48:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 7);
             { yybegin(EXPRESSION); return SqlTypes.EL_EXPAND;
             }
           // fall through
-          case 93: break;
-          case 47:
+          case 97: break;
+          case 49:
             // lookahead expression with fixed base length
             zzMarkedPos = Character.offsetByCodePoints
                 (zzBufferL, zzStartRead, 9);
             { yybegin(EXPRESSION); return SqlTypes.EL_POPULATE;
             }
           // fall through
-          case 94: break;
+          case 98: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }

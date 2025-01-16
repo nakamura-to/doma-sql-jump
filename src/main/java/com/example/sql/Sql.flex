@@ -106,17 +106,9 @@ El_NonWordPart = [=<>\-,/*();\R \n\t\f]
 %%
 
 <YYINITIAL> {
-  {BlockCommentStart} {
-    char next = yycharat(yylength());
-    if (next == '%' || next == '#' || next == '^') {
-        yybegin(DIRECTIVE);
-    } else if (next == '@' || next == '"' || next == '\'' || Character.isJavaIdentifierStart(next) || Character.isWhitespace(next)) {
-        yybegin(EXPRESSION);
-    } else {
-        yybegin(BLOCK_COMMENT);
-    }
-    return SqlTypes.BLOCK_COMMENT_START;
-  }
+  {BlockCommentStart}/[%#\^]                   { yybegin(DIRECTIVE); return SqlTypes.BLOCK_COMMENT_START; }
+  {BlockCommentStart}/[@\"' \n\t\f[:jletter:]] { yybegin(EXPRESSION); return SqlTypes.BLOCK_COMMENT_START; }
+  {BlockCommentStart}                          { yybegin(BLOCK_COMMENT); return SqlTypes.BLOCK_COMMENT_START; }
   {LineComment}                                { return SqlTypes.LINE_COMMENT; }
   {String}                                     { return SqlTypes.STRING; }
   {Number}                                     { return SqlTypes.NUMBER; }
