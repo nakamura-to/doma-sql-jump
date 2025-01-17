@@ -8,7 +8,6 @@ import com.example.sql.psi.impl.*;
 
 public interface SqlTypes {
 
-  IElementType BLOCK_COMMENT = new SqlElementType("BLOCK_COMMENT");
   IElementType EL_ADD_EXPR = new SqlElementType("EL_ADD_EXPR");
   IElementType EL_AND_EXPR = new SqlElementType("EL_AND_EXPR");
   IElementType EL_DIVIDE_EXPR = new SqlElementType("EL_DIVIDE_EXPR");
@@ -84,10 +83,7 @@ public interface SqlTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == BLOCK_COMMENT) {
-        return new SqlBlockCommentImpl(node);
-      }
-      else if (type == EL_ADD_EXPR) {
+      if (type == EL_ADD_EXPR) {
         return new SqlElAddExprImpl(node);
       }
       else if (type == EL_AND_EXPR) {
