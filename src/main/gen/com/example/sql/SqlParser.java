@@ -46,11 +46,11 @@ public class SqlParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "/*" (el_directive | BLOCK_COMMENT_CONTENT?) "*/"
-  static boolean block_comment(PsiBuilder b, int l) {
+  public static boolean block_comment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "block_comment")) return false;
     if (!nextTokenIs(b, BLOCK_COMMENT_START)) return false;
     boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_);
+    Marker m = enter_section_(b, l, _NONE_, BLOCK_COMMENT, null);
     r = consumeToken(b, BLOCK_COMMENT_START);
     p = r; // pin = 1
     r = r && report_error_(b, block_comment_1(b, l + 1));

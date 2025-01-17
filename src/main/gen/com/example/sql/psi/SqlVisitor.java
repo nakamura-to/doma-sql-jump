@@ -7,6 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public class SqlVisitor extends PsiElementVisitor {
 
+  public void visitBlockComment(@NotNull SqlBlockComment o) {
+    visitBlockCommentElement(o);
+  }
+
   public void visitElAddExpr(@NotNull SqlElAddExpr o) {
     visitElExpr(o);
   }
@@ -101,6 +105,10 @@ public class SqlVisitor extends PsiElementVisitor {
 
   public void visitElSubtractExpr(@NotNull SqlElSubtractExpr o) {
     visitElExpr(o);
+  }
+
+  public void visitBlockCommentElement(@NotNull SqlBlockCommentElement o) {
+    visitPsiElement(o);
   }
 
   public void visitPsiElement(@NotNull PsiElement o) {

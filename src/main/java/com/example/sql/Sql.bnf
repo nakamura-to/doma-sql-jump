@@ -74,7 +74,11 @@ private item ::= (comment | literal | word | OTHER)
 private comment ::= (block_comment | LINE_COMMENT)
 private literal ::= (STRING | NUMBER)
 private word ::= (KEYWORD | WORD)
-private block_comment ::= "/*" (el_directive | BLOCK_COMMENT_CONTENT?) "*/" {pin=1}
+block_comment ::= "/*" (el_directive | BLOCK_COMMENT_CONTENT?) "*/" {
+    pin=1
+    mixin="SqlBlockCommentElementImpl"
+    implements="SqlBlockCommentElement"
+}
 // Detect errors for each item
 private content_recover ::= !item
 
