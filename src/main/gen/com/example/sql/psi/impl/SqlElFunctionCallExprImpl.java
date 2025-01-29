@@ -33,4 +33,10 @@ public class SqlElFunctionCallExprImpl extends SqlElExprImpl implements SqlElFun
     return PsiTreeUtil.getChildrenOfTypeAsList(this, SqlElExpr.class);
   }
 
+  @Override
+  @NotNull
+  public PsiElement getElIdentifier() {
+    return findNotNullChildByType(EL_IDENTIFIER);
+  }
+
 }

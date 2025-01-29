@@ -13,13 +13,12 @@ public interface SqlTypes {
   IElementType EL_DIVIDE_EXPR = new SqlElementType("EL_DIVIDE_EXPR");
   IElementType EL_EQ_EXPR = new SqlElementType("EL_EQ_EXPR");
   IElementType EL_EXPR = new SqlElementType("EL_EXPR");
+  IElementType EL_FACTOR_EXPR = new SqlElementType("EL_FACTOR_EXPR");
   IElementType EL_FIELD_ACCESS_EXPR = new SqlElementType("EL_FIELD_ACCESS_EXPR");
   IElementType EL_FUNCTION_CALL_EXPR = new SqlElementType("EL_FUNCTION_CALL_EXPR");
   IElementType EL_GE_EXPR = new SqlElementType("EL_GE_EXPR");
   IElementType EL_GT_EXPR = new SqlElementType("EL_GT_EXPR");
-  IElementType EL_ID_EXPR = new SqlElementType("EL_ID_EXPR");
   IElementType EL_LE_EXPR = new SqlElementType("EL_LE_EXPR");
-  IElementType EL_LITERAL_EXPR = new SqlElementType("EL_LITERAL_EXPR");
   IElementType EL_LT_EXPR = new SqlElementType("EL_LT_EXPR");
   IElementType EL_METHOD_CALL_EXPR = new SqlElementType("EL_METHOD_CALL_EXPR");
   IElementType EL_MOD_EXPR = new SqlElementType("EL_MOD_EXPR");
@@ -28,10 +27,11 @@ public interface SqlTypes {
   IElementType EL_NE_EXPR = new SqlElementType("EL_NE_EXPR");
   IElementType EL_NOT_EXPR = new SqlElementType("EL_NOT_EXPR");
   IElementType EL_OR_EXPR = new SqlElementType("EL_OR_EXPR");
-  IElementType EL_PAREN_EXPR = new SqlElementType("EL_PAREN_EXPR");
+  IElementType EL_PRIMARY_EXPR = new SqlElementType("EL_PRIMARY_EXPR");
   IElementType EL_STATIC_FIELD_ACCESS_EXPR = new SqlElementType("EL_STATIC_FIELD_ACCESS_EXPR");
   IElementType EL_STATIC_METHOD_CALL_EXPR = new SqlElementType("EL_STATIC_METHOD_CALL_EXPR");
   IElementType EL_SUBTRACT_EXPR = new SqlElementType("EL_SUBTRACT_EXPR");
+  IElementType EL_TERM_EXPR = new SqlElementType("EL_TERM_EXPR");
 
   IElementType BLOCK_COMMENT_CONTENT = new SqlTokenType("BLOCK_COMMENT_CONTENT");
   IElementType BLOCK_COMMENT_END = new SqlTokenType("*/");
@@ -107,14 +107,8 @@ public interface SqlTypes {
       else if (type == EL_GT_EXPR) {
         return new SqlElGtExprImpl(node);
       }
-      else if (type == EL_ID_EXPR) {
-        return new SqlElIdExprImpl(node);
-      }
       else if (type == EL_LE_EXPR) {
         return new SqlElLeExprImpl(node);
-      }
-      else if (type == EL_LITERAL_EXPR) {
-        return new SqlElLiteralExprImpl(node);
       }
       else if (type == EL_LT_EXPR) {
         return new SqlElLtExprImpl(node);
@@ -140,8 +134,8 @@ public interface SqlTypes {
       else if (type == EL_OR_EXPR) {
         return new SqlElOrExprImpl(node);
       }
-      else if (type == EL_PAREN_EXPR) {
-        return new SqlElParenExprImpl(node);
+      else if (type == EL_PRIMARY_EXPR) {
+        return new SqlElPrimaryExprImpl(node);
       }
       else if (type == EL_STATIC_FIELD_ACCESS_EXPR) {
         return new SqlElStaticFieldAccessExprImpl(node);

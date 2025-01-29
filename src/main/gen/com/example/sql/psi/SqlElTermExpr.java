@@ -5,9 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface SqlElParenExpr extends SqlElExpr {
-
-  @Nullable
-  SqlElExpr getElExpr();
+public interface SqlElTermExpr extends SqlElExpr {
 
 }

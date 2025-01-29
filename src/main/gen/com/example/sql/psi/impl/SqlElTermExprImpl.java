@@ -10,27 +10,21 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static com.example.sql.psi.SqlTypes.*;
 import com.example.sql.psi.*;
 
-public class SqlElIdExprImpl extends SqlElExprImpl implements SqlElIdExpr {
+public abstract class SqlElTermExprImpl extends SqlElExprImpl implements SqlElTermExpr {
 
-  public SqlElIdExprImpl(@NotNull ASTNode node) {
+  public SqlElTermExprImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   @Override
   public void accept(@NotNull SqlVisitor visitor) {
-    visitor.visitElIdExpr(this);
+    visitor.visitElTermExpr(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof SqlVisitor) accept((SqlVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getElIdentifier() {
-    return findNotNullChildByType(EL_IDENTIFIER);
   }
 
 }

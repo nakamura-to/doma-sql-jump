@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface SqlElFieldAccessExpr extends SqlElExpr {
 
-  @NotNull
-  List<SqlElExpr> getElExprList();
+  @Nullable
+  SqlElPrimaryExpr getElPrimaryExpr();
 
 }

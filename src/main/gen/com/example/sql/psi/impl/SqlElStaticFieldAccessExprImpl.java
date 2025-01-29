@@ -27,10 +27,4 @@ public class SqlElStaticFieldAccessExprImpl extends SqlElExprImpl implements Sql
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public List<SqlElExpr> getElExprList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, SqlElExpr.class);
-  }
-
 }

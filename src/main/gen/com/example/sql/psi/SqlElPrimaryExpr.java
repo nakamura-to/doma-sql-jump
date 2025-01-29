@@ -5,13 +5,19 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface SqlElLiteralExpr extends SqlElExpr {
+public interface SqlElPrimaryExpr extends SqlElFactorExpr {
+
+  @Nullable
+  SqlElExpr getElExpr();
 
   @Nullable
   PsiElement getElBoolean();
 
   @Nullable
   PsiElement getElChar();
+
+  @Nullable
+  PsiElement getElIdentifier();
 
   @Nullable
   PsiElement getElNumber();

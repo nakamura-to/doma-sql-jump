@@ -27,6 +27,10 @@ public class SqlVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitElFactorExpr(@NotNull SqlElFactorExpr o) {
+    visitElTermExpr(o);
+  }
+
   public void visitElFieldAccessExpr(@NotNull SqlElFieldAccessExpr o) {
     visitElExpr(o);
   }
@@ -43,15 +47,7 @@ public class SqlVisitor extends PsiElementVisitor {
     visitElExpr(o);
   }
 
-  public void visitElIdExpr(@NotNull SqlElIdExpr o) {
-    visitElExpr(o);
-  }
-
   public void visitElLeExpr(@NotNull SqlElLeExpr o) {
-    visitElExpr(o);
-  }
-
-  public void visitElLiteralExpr(@NotNull SqlElLiteralExpr o) {
     visitElExpr(o);
   }
 
@@ -87,8 +83,8 @@ public class SqlVisitor extends PsiElementVisitor {
     visitElExpr(o);
   }
 
-  public void visitElParenExpr(@NotNull SqlElParenExpr o) {
-    visitElExpr(o);
+  public void visitElPrimaryExpr(@NotNull SqlElPrimaryExpr o) {
+    visitElFactorExpr(o);
   }
 
   public void visitElStaticFieldAccessExpr(@NotNull SqlElStaticFieldAccessExpr o) {
@@ -100,6 +96,10 @@ public class SqlVisitor extends PsiElementVisitor {
   }
 
   public void visitElSubtractExpr(@NotNull SqlElSubtractExpr o) {
+    visitElExpr(o);
+  }
+
+  public void visitElTermExpr(@NotNull SqlElTermExpr o) {
     visitElExpr(o);
   }
 

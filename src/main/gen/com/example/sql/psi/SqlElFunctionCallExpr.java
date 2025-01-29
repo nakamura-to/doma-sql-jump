@@ -10,4 +10,7 @@ public interface SqlElFunctionCallExpr extends SqlElExpr {
   @NotNull
   List<SqlElExpr> getElExprList();
 
+  @NotNull
+  PsiElement getElIdentifier();
+
 }

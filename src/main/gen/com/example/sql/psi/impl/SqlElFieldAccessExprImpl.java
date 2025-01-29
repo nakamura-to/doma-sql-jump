@@ -28,9 +28,9 @@ public class SqlElFieldAccessExprImpl extends SqlElExprImpl implements SqlElFiel
   }
 
   @Override
-  @NotNull
-  public List<SqlElExpr> getElExprList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, SqlElExpr.class);
+  @Nullable
+  public SqlElPrimaryExpr getElPrimaryExpr() {
+    return findChildByClass(SqlElPrimaryExpr.class);
   }
 
 }
