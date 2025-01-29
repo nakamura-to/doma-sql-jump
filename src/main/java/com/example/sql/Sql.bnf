@@ -108,7 +108,7 @@ private el_parser_level_comment_directive ::= "%!" BLOCK_COMMENT_CONTENT* {pin=1
 // expr
 el_expr ::= el_logical_expr_group | el_term_expr
 private el_logical_expr_group ::= el_not_expr | el_and_expr | el_or_expr
-el_not_expr ::= "!" el_expr {pin=1}
+el_not_expr ::= "!" el_factor_expr {pin=1}
 el_and_expr ::= el_expr "&&" el_expr
 el_or_expr ::= el_expr "||" el_expr
 
